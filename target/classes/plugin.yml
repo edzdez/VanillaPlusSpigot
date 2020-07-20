@@ -7,8 +7,10 @@ description: Adds a lot of features to your spigot/paper server, such as /heal, 
 
 commands:
   heal:
-    description: This is the heal command!
+    description: This is the /heal command!
   fly:
-    description: This is the fly command!
+    description: This is the /fly command!
   craft:
-    description: This is the craft command!
+    description: This is the /craft command!
+  spawn:
+    description: This is the /spawn command!
