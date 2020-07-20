@@ -10,3 +10,5 @@ commands:
     description: This is the heal command!
   fly:
     description: This is the fly command!
+  craft:
+    description: This is the craft command!
