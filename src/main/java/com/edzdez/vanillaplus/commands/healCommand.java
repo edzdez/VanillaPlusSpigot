@@ -26,7 +26,7 @@ public class healCommand implements CommandExecutor {
 
         Player p = (Player) sender;
 
-        if (p.hasPermission("VanillaPlus.heal")) {
+        if (p.hasPermission("vanillaplus.heal")) {
             if (args.length < 1) {
                 p.setHealth(p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getDefaultValue());
                 p.setFoodLevel(20);
