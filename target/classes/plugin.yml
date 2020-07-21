@@ -11,6 +11,10 @@ commands:
   fly:
     description: This is the /fly command!
   craft:
+    aliases: [wb]
     description: This is the /craft command!
   spawn:
     description: This is the /spawn command!
+  echest:
+    aliases: [ec]
+    description: This opens up a player's echest!

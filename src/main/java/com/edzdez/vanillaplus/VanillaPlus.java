@@ -18,6 +18,7 @@ public final class VanillaPlus extends JavaPlugin {
         new flyCommand(this);
         new craftCommand(this);
         new spawnCommand(this);
+        new eChestCommand(this);
 //        new backCommand(this);
     }
 
