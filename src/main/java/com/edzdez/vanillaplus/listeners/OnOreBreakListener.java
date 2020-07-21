@@ -1,5 +1,6 @@
 package com.edzdez.vanillaplus.listeners;
 
+import com.edzdez.vanillaplus.VanillaPlus;
 import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -15,9 +16,16 @@ import java.util.List;
 
 public class OnOreBreakListener implements Listener {
     List<Material> tools = Arrays.asList(Material.STONE_PICKAXE, Material.IRON_PICKAXE, Material.GOLDEN_PICKAXE, Material.DIAMOND_PICKAXE, Material.NETHERITE_PICKAXE);
+    VanillaPlus plugin;
+
+    public OnOreBreakListener(VanillaPlus plugin) {
+        this.plugin = plugin;
+    }
 
     @EventHandler
     public void event(BlockBreakEvent event) {
+        if (!(plugin.getConfig().getBoolean("autosmelt"))) return;
+
         Block block = event.getBlock();
         Player p = event.getPlayer();
         Material material = block.getType();
