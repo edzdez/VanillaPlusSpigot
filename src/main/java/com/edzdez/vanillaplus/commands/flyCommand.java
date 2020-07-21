@@ -24,8 +24,7 @@ public class flyCommand implements CommandExecutor {
         Player p = (Player) sender;
 
         if (p.hasPermission("vanillaplus.fly")) {
-            p.setAllowFlight(true);
-            if (p.isFlying()) p.setAllowFlight(false);
+            if (p.getAllowFlight()) p.setAllowFlight(false);
             else p.setAllowFlight(true);
             p.sendMessage("Toggling Flight...");
             return true;
