@@ -24,8 +24,6 @@ public class OnOreBreakListener implements Listener {
 
     @EventHandler
     public void event(BlockBreakEvent event) {
-        if (!(plugin.getConfig().getBoolean("autosmelt"))) return;
-
         Block block = event.getBlock();
         Player p = event.getPlayer();
         Material material = block.getType();

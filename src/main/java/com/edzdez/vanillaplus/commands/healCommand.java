@@ -19,8 +19,6 @@ public class healCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(plugin.getConfig().getBoolean("heal"))) return false;
-
         if (!(sender instanceof Player)) {
             sender.sendMessage("Sorry, Console can't do this!");
             return true;

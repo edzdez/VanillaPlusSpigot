@@ -17,8 +17,6 @@ public class spawnCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!(plugin.getConfig().getBoolean("spawn"))) return false;
-
         if (!(sender instanceof Player)) {
             sender.sendMessage("Sorry, Console can't do this!");
             return true;
