@@ -30,11 +30,15 @@ public class backCommand implements CommandExecutor {
         }
 
         Player p = (Player) sender;
-        OnDeathListener listener = new OnDeathListener(this.plugin);
-        HashMap<Player, Location> deathLoc = listener.getHashMap();
+        HashMap<Player, Location> deathLoc = plugin.deathLocGetter();
+
 
         if (p.hasPermission("vanillaplus.back")) {
-//            Bukkit.getLogger().info(deathLoc.get(p).getX() + " " + deathLoc.get(p).getY() + " " + deathLoc.get(p).getZ());
+            if (deathLoc.containsKey(p)) {
+                p.teleport(deathLoc.get(p));
+            } else {
+                p.teleport(p.getBedSpawnLocation());
+            }
             return true;
         }
 
