@@ -8,7 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class VanillaPlus extends JavaPlugin {
     @Override
     public void onEnable() {
-//        getServer().getPluginManager().registerEvents(new OnDeathListener(), this);
+        getServer().getPluginManager().registerEvents(new OnDeathListener(this), this);
         getServer().getPluginManager().registerEvents(new OnOreBreakListener(this), this);
 
         new healCommand(this);
@@ -16,7 +16,7 @@ public final class VanillaPlus extends JavaPlugin {
         new craftCommand(this);
         new spawnCommand(this);
         new eChestCommand(this);
-//        new backCommand(this);
+        new backCommand(this);
     }
 
     @Override

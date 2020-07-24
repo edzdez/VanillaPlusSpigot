@@ -18,3 +18,5 @@ commands:
   echest:
     aliases: [ec]
     description: This opens up a player's echest!
+  back:
+    description: This is the /back command!

@@ -1,40 +1,40 @@
 package com.edzdez.vanillaplus.listeners;
 
+import com.edzdez.vanillaplus.VanillaPlus;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 public class OnDeathListener implements Listener {
-    private HashMap<String, Location> deathLocations;
+    private VanillaPlus plugin;
+    private HashMap<Player, Location> deathLoc = new HashMap<Player, Location>();
 
-    public Location getDeathLoc(String playerName) {
-        Location deathLoc;
-        Player p = Bukkit.getPlayer(playerName);
+    public OnDeathListener(VanillaPlus plugin) {
+        this.plugin = plugin;
+    }
 
-        if (!(deathLocations.containsKey(playerName))) {
-            deathLoc = new Location(p.getWorld(), p.getWorld().getSpawnLocation().getX(), p.getWorld().getHighestBlockYAt(p.getWorld().getSpawnLocation()) + 2, p.getWorld().getSpawnLocation().getZ());
-        } else {
-            deathLoc = deathLocations.get(playerName);
-        }
-
+    public HashMap<Player, Location> getHashMap() {
         return deathLoc;
     }
 
     @EventHandler
-    public void onPlayerDeath(PlayerDeathEvent event) {
-        Player p = (Player) event.getEntity();
-        Location deathLoc = p.getLocation();
+    public void event(PlayerDeathEvent event) {
+        Bukkit.getLogger().info("proc'd");
+        Player p = event.getEntity();
+        Location loc = p.getLocation();
 
-        if (deathLocations.containsKey(p.getName())) {
-            deathLocations.remove(p.getName());
-            deathLocations.put(p.getName(), deathLoc);
-        } else {
-            deathLocations.put(p.getName(), deathLoc);
-        }
+        deathLoc.put(p, loc);
+        Bukkit.getLogger().info("Added " + p.getName() + "'s death location at " + loc.getX() + " " + loc.getY() + " " + loc.getZ());
+//        Bukkit.getLogger().info(p.getName() + ": " + deathLoc.get(p.getName()).getX() + " " + deathLoc.get(p.getName()).getY() + " " + deathLoc.get(p.getName()).getZ());
+
+        p.spigot().respawn();
+        p.teleport(deathLoc.get(p));
     }
 }
